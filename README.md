@@ -5,6 +5,7 @@ simple get requests _(yup no post requests **_YET_**)_
 
 > [!WARNING]
 > i haven't tested this yet so idk how usable it is
+>
 > but this is the ideal usage:
 
 ```python
