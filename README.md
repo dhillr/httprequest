@@ -3,5 +3,5 @@ an assigment :D
 
 simple get requests _(yup no post requests **_YET_**)_
 
-[!WARNING]
-i haven't tested this yet so idk how usable it is
+> [!WARNING]
+> i haven't tested this yet so idk how usable it is
