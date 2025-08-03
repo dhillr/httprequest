@@ -1,8 +1,8 @@
 import ctypes
-import time
+from time import strptime, struct_time
 
 class Response:
-    def __init__(self, status_code: int, status_code_name: str, content_type: str, last_modified: time.struct_time, data: str):
+    def __init__(self, status_code: int, status_code_name: str, content_type: str, last_modified: struct_time, data: str):
         self.status_code = status_code
         self.__status_code_name = status_code_name
         self.content_type = content_type
@@ -40,7 +40,6 @@ def get(url: str):
     # if len(page) > 1: page = page[:-1]
 
     response_data: str = __get(host.encode(), page.encode()).decode("latin-1")
-    print(response_data)
     lines = response_data.split("\r\n")
     response_info_lines: list[str] = []
 
@@ -54,7 +53,7 @@ def get(url: str):
         response_info_lines[0].split(" ")[2],
         __prop_find(response_info_lines, "Content-Type").split(";")[0]
         if __prop_find(response_info_lines, "Content-Type") else None,
-        time.strptime(
+        strptime(
             __prop_find(response_info_lines, "Last-Modified"),
             "%a, %d %b %Y %H:%M:%S GMT"
         ) if __prop_find(response_info_lines, "Last-Modified") else None,
